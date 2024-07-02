@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>todo-list</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .main_container {
+      border: 2px solid black;
+      height: 400px;
+      width: 400px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 10px;
+    }
+    #inputval {
+      width: 300px;
+      height: 40px;
+      margin-top: 10px;
+      margin-left: 40px;
+    }
+    #btn {
+      background-color: black;
+      color: white;
+      font-weight: bolder;
+      width: 30px;
+      height: 30px;
+    }
+    .heading {
+      text-align: center;
+      background-color: black;
+      color: white;
+      font-weight: bold;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+    .karan {
+      border: 2px solid red;
+    }
+  </style>
+  <body>
+    <div class="main_container">
+      <input type="text" id="inputval" />
+      <button id="btn">+</button>
+      <div id="task_container"></div>
+    </div>
+
+    <script>
+      function createList() {
+        const inputvalue = document.getElementById("inputval");
+        const container = document.getElementById("task_container");
+        let task = document.createElement("h1");
+        task.className = "heading";
+        task.innerText = inputvalue.value;
+        inputvalue.value = "";
+        container.appendChild(task);
+
+        function removeTask() {
+          container.removeChild(task);
+        }
+        function completeTask() {
+          task.style.textDecoration = "line-through";
+        }
+
+        task.addEventListener("click", completeTask);
+        task.addEventListener("dblclick", removeTask);
+      }
+      const buttonone = document.getElementById("btn");
+      buttonone.addEventListener("click", createList);
+    </script>
+  </body>
+</html>
