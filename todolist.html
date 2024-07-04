@@ -48,6 +48,7 @@
   </style>
   <body>
     <div class="main_container">
+      <!-- using document.createElement  -->
       <input type="text" id="inputval" />
       <button id="btn">+</button>
       <div id="task_container"></div>
@@ -55,16 +56,16 @@
 
     <script>
       function createList() {
-        const inputvalue = document.getElementById("inputval");
-        const container = document.getElementById("task_container");
-        let task = document.createElement("h1");
-        task.className = "heading";
-        task.innerText = inputvalue.value;
-        inputvalue.value = "";
-        container.appendChild(task);
+        const inputvalue = document.getElementById("inputval"); // this line of code call the input and access the input methods and propertyies
+        const container = document.getElementById("task_container"); // this can access the container using dom
+        let task = document.createElement("h1"); // creates a new element or tag h1
+        task.className = "heading"; // adding class to task element
+        task.innerText = inputvalue.value; // inside the h1 element we add the value of input
+        inputvalue.value = ""; // empty the input value
+        container.appendChild(task); // add the child tag or element to the container
 
         function removeTask() {
-          container.removeChild(task);
+          container.removeChild(task); // delete from the container
         }
         function completeTask() {
           task.style.textDecoration = "line-through";

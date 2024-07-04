@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SideBar</title>
+  </head>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: gray;
+    }
+    .cotnainer {
+      width: 100%;
+      padding: 10px;
+    }
+
+    .main_container {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      margin: auto;
+    }
+    .logo {
+      font-weight: bold;
+      color: red;
+      font-size: 25px;
+    }
+    .second_child {
+      display: flex;
+    }
+    .second_child ul {
+      display: inline-flex;
+    }
+    .second_child ul li {
+      list-style: none;
+      margin: 0 23px;
+    }
+    .open_btn {
+      font-size: 30px;
+      font-weight: bolder;
+      display: none;
+    }
+    .sidebar {
+      height: 100vh;
+      width: 220px;
+      background-color: white;
+      position: absolute;
+      right: -250px;
+      top: 0;
+      z-index: 1000;
+      display: none;
+    }
+    .sidebar_ul {
+      display: flex;
+      justify-content: center;
+    }
+    .sidebar_ul ul li {
+      margin: 25px 0;
+      list-style: none;
+    }
+    .close_btn {
+      margin-left: 100px;
+      font-size: 30px;
+      font-weight: bold;
+    }
+    @media screen and (max-width: 600px) {
+      .main_container {
+        width: 100%;
+      }
+      .open_btn {
+        display: block;
+      }
+      .second_child ul li {
+        display: none;
+      }
+      .sidebar {
+        display: block;
+      }
+    }
+  </style>
+  <body>
+    <div class="cotnainer">
+      <nav class="main_container">
+        <div class="first_child">
+          <span class="logo">WebLogo</span>
+        </div>
+        <div class="second_child">
+          <ul>
+            <li>HOME</li>
+            <li>ABOUT</li>
+            <li>CONTACT</li>
+          </ul>
+          <span id="open_btn" class="open_btn">|||</span>
+        </div>
+      </nav>
+    </div>
+    <div class="sidebar" id="sidebarcalling">
+      <div class="sidebar_ul">
+        <ul>
+          <li>HOME</li>
+          <li>ABOUT</li>
+          <li>CONTACT</li>
+        </ul>
+        <span id="close_btn" class="close_btn">X</span>
+      </div>
+    </div>
+
+    <script>
+      let openBtn = document.getElementById("open_btn");
+      let closeBtn = document.getElementById("close_btn");
+      function openBtnclick() {
+        const sidebar = document.getElementById("sidebarcalling");
+        sidebar.style.right = "0";
+        openBtn.style.display = "none";
+      }
+
+      function closeBtnclick() {
+        const sidebar = document.getElementById("sidebarcalling");
+        sidebar.style.right = "-250px";
+        openBtn.style.display = "block";
+      }
+
+      openBtn.addEventListener("click", openBtnclick);
+      closeBtn.addEventListener("click", closeBtnclick);
+    </script>
+  </body>
+</html>
